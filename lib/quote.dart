@@ -8,9 +8,11 @@ class Quote {
 }
 
 class QuoteWidget extends StatelessWidget {
-  Quote quote;
 
-  QuoteWidget({this.quote});
+  final Quote quote;
+  final Function delete;
+
+  QuoteWidget({this.quote, this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,12 @@ class QuoteWidget extends StatelessWidget {
                   color: Colors.grey[800],
                   fontSize: 12,
                   fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8.0),
+            FlatButton.icon(
+                onPressed: delete,
+                icon: Icon(Icons.delete),
+                label: Text('Delete')
             )
           ],
         ),
