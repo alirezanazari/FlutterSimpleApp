@@ -5,7 +5,15 @@ void main() => runApp(MaterialApp(
       home: Home(),
     ));
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  String name = 'Alireza';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +23,18 @@ class Home extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.grey[850],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            setState(() {
+              name = 'Alireza Nazari';
+            });
+          },
+          backgroundColor: Colors.grey[850],
+          child: Icon(
+            Icons.add ,
+            color: Colors.white,
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(30, 40, 10, 10),
@@ -38,7 +58,7 @@ class Home extends StatelessWidget {
                       letterSpacing: 2,
                       fontWeight: FontWeight.normal)),
               SizedBox(height: 10),
-              Text('Alireza Nazari',
+              Text(name ,
                   style: TextStyle(
                       color: Colors.amber,
                       fontSize: 18,
