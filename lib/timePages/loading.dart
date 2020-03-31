@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutterapp/repository/time_repository.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -15,7 +18,8 @@ class _LoadingState extends State<Loading> {
       Navigator.pushReplacementNamed(context, "/home", arguments: {
         'time': repo.time,
         'city': repo.location,
-        'flag': repo.flag
+        'flag': repo.flag,
+        'isNight': repo.isNight
       });
     }
 
@@ -30,10 +34,13 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[500],
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text('Loading'),
+        child: Center(
+          child: SpinKitCircle(
+            color: Colors.white,
+              size: 50.0,
+          ),
         ),
       ),
     );
