@@ -19,7 +19,7 @@ class _LoadingState extends State<Loading> {
         'time': repo.time,
         'city': repo.location,
         'flag': repo.flag,
-        'isNight': repo.isNight
+        'isNight': !repo.isDay
       });
     }
 

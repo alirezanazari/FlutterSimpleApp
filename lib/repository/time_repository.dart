@@ -8,7 +8,7 @@ class TimeRepository {
   String location;
   String flag;
   String url;
-  bool isNight ;
+  bool isDay ;
 
   TimeRepository({this.location, this.flag, this.url});
 
@@ -21,8 +21,8 @@ class TimeRepository {
       DateTime now = DateTime.parse(data['datetime']);
       now = now.add(Duration(hours: offset));
 
-      isNight = now.hour > 6 && now.hour < 20 ? false : true;
-      time = DateFormat.jm().format(now);
+      isDay = now.hour > 6 && now.hour < 20 ? true : false;
+      time = DateFormat.Hm().format(now);
     } catch (e) {
       time = 'error';
     }

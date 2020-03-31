@@ -21,7 +21,7 @@ class _HomeTimeState extends State<HomeTime> {
     }
     isNight = args['isNight'];
 
-    String bgCover = isNight ? 'night' : 'day';
+    String bgCover = isNight ? 'night.jpg' : 'day.jpg';
     Color bgColor = isNight ? Colors.indigo[800] : Colors.blue;
 
     return Scaffold(
@@ -30,7 +30,7 @@ class _HomeTimeState extends State<HomeTime> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/$bgCover.png'),
+              image: AssetImage('assets/$bgCover'),
               fit: BoxFit.cover
             )
           ),
@@ -39,8 +39,11 @@ class _HomeTimeState extends State<HomeTime> {
             child: Column(
               children: <Widget>[
                 FlatButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
+                  onPressed: () async{
+                    dynamic resp = await Navigator.pushNamed(context, '/location');
+                    setState(() {
+                      args = resp as Map;
+                    });
                   },
                   icon: Icon(
                     Icons.edit_location,
