@@ -7,16 +7,17 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-
-  String time = 'Loading';
-
-  void getTimeByApi() async{
-
-    TimeRepository repo = TimeRepository(location:'Tehran' , flag: 'iran.jpg', url: 'Asia/Tehran');
+  void getTimeByApi() async {
+    TimeRepository repo = TimeRepository(location: 'Tehran', flag: 'iran.jpg', url: 'Asia/Tehran');
     await repo.getTimeByApi();
-    setState(() {
-      time = repo.time;
-    });
+
+    if (repo.time != 'error') {
+      Navigator.pushReplacementNamed(context, "/home", arguments: {
+        'time': repo.time,
+        'city': repo.location,
+        'flag': repo.flag
+      });
+    }
 
   }
 
@@ -32,7 +33,7 @@ class _LoadingState extends State<Loading> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(time),
+          child: Text('Loading'),
         ),
       ),
     );
