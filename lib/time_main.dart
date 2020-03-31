@@ -6,7 +6,7 @@ import 'package:flutterapp/timePages/home.dart';
 import 'package:flutterapp/timePages/loading.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/home',
+  initialRoute: '/',
   routes: {
     '/': (context) => Loading(),
     '/home': (context) => HomeTime(),
